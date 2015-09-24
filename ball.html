@@ -24,15 +24,9 @@
       var canvas = document.getElementById("canvas-for-ball");
       // Get a 2D context for the canvas.
       var ctx = canvas.getContext("2d");
-
-      // Set the fill colour to blue.
-      ctx.fillStyle = "rgb(0, 0, 255)";
       
       // The vertical location of the ball.
       var y = 10;
-
-      // A pointer to the animation frame.
-      var animframe;
 
       // A function to repeat every time the animation loops.
       function repeatme() {
@@ -40,17 +34,14 @@
         ctx.beginPath();
         ctx.arc(50, y, 3, 0, 2 * Math.PI);
         ctx.stroke();
+        
         // Update the y location.
         y += 1;
-        // Cancel the animation when y is 100.
-        if (y > 100)
-          cancelAnimationFrame(animframe)
-        else
-          // Keep the animation frame pointer updated.
-          animframe = window.requestAnimationFrame(repeatme);
+        
+        window.requestAnimationFrame(repeatme);
       }
       
-      // Get the animation frame going.
+      // Get the animation going.
       repeatme();
 
     </script>
