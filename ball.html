@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+
+<html>
+
+  <head>
+    <meta charset="UTF-8">
+    <title>Canvas</title>
+
+    <style type="text/css">
+      body {
+          background-color: white;
+      }
+    </style>
+
+  </head>
+
+  <body>
+
+    <canvas id="canvas-for-ball"></canvas>
+
+    <script type="text/javascript">
+
+      // Gets a handle to the element with id canvasOne.
+      var canvas = document.getElementById("canvas-for-ball");
+      // Get a 2D context for the canvas.
+      var ctx = canvas.getContext("2d");
+
+      // Set the fill colour to blue.
+      ctx.fillStyle = "rgb(0, 0, 255)";
+      
+      // The vertical location of the ball.
+      var y = 10;
+
+      // A pointer to the animation frame.
+      var animframe;
+
+      // A function to repeat every time the animation loops.
+      function repeatme() {
+        // Draw the ball (stroked, not filled).
+        ctx.beginPath();
+        ctx.arc(50, y, 3, 0, 2 * Math.PI);
+        ctx.stroke();
+        // Update the y location.
+        y += 1;
+        // Cancel the animation when y is 100.
+        if (y > 100)
+          cancelAnimationFrame(animframe)
+        else
+          // Keep the animation frame pointer updated.
+          animframe = window.requestAnimationFrame(repeatme);
+      }
+      
+      // Get the animation frame going.
+      repeatme();
+
+    </script>
+
+  </body>
+
+</html>
