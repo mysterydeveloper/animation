@@ -9,15 +9,15 @@
     <style type="text/css">
       body {
           background-color: white;
-      }
+						}
     </style>
 
   </head>
 
   <body>
 
-    <canvas id="canvas-for-ball"></canvas>
-
+    <canvas id="canvas-for-ball" width="400" height="200" style="border:10px solid #000000;">
+</canvas>
     <script type="text/javascript">
 
       // Gets a handle to the element with id canvasOne.
@@ -27,18 +27,27 @@
       
       // The vertical location of the ball.
       var y = 10;
+				  var	r=3;
+					 var x=50;
 
       // A function to repeat every time the animation loops.
       function repeatme() {
+							ctx.clearRect(0,0,canvas.width,canvas.height);
         // Draw the ball (stroked, not filled).
         ctx.beginPath();
-        ctx.arc(50, y, 3, 0, 2 * Math.PI);
+        ctx.arc(x, y, r, 0, 2 * Math.PI);
         ctx.stroke();
         
         // Update the y location.
         y += 1;
+						
+							if(y<canvas.height-r){
+							 window.requestAnimationFrame(repeatme);
+								
+							}
+						
         
-        window.requestAnimationFrame(repeatme);
+       
       }
       
       // Get the animation going.
